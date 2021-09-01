@@ -1,12 +1,25 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { AppModule } from './app.module';
 
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule, {
+    logger: ['log', 'error', 'warn', 'debug'],
+  });
 
-if (environment.production) {
-  enableProdMode();
+  app.enableCors();
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
+
+  const options = new DocumentBuilder()
+    .setTitle('Dividir O Pão')
+    .setDescription('API for Dividir O Pão')
+    .setVersion('1.0')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api', app, document);
+
+  await app.listen(parseInt(process.env.SERVER_PORT) || 3000);
 }
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrap();
