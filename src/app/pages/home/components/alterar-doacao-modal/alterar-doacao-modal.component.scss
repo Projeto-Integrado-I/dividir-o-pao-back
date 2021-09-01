@@ -1,0 +1,96 @@
+@use '~@angular/material' as mat;
+@use '../../../../../theme/additional-colors.scss' as additional-colors;
+
+@mixin alterar-doacao-modal-theme($theme) {
+  $color: mat.get-color-config($theme);
+  @if $color != null {
+    @include alterar-doacao-modal-color($color);
+  }
+}
+
+@mixin alterar-doacao-modal-color($color) {
+  $warn: map-get($color, "warn");
+  $accent: map-get($color, "accent");
+  $primary: map-get($color, "primary");
+  $default: additional-colors.$md-default;
+
+  ::ng-deep.mat-dialog-container {
+    background-color: #fff;
+  }
+
+  #head-corpo {
+    background-color: mat.get-color-from-palette($primary);
+    p {
+      color: #fff;
+      padding-left: 40px;
+    }
+
+    #exit {
+      color: #fff;
+      padding-right: 60px;
+    }
+  }
+
+  #enviar {
+    color: mat.get-color-from-palette($primary);
+  }
+}
+
+::ng-deep.mat-dialog-container {
+  width: 420px;
+  height: 340px;
+  border-radius: 25px;
+  padding: 0px;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+}
+
+#head-corpo {
+  width: 100%;
+  height: 18%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    padding-left: 158px;
+  }
+
+  #exit {
+    padding-right: 60px;
+  }
+}
+
+.caixa-maior {
+  width: 85%;
+  height: 82%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+#alterar-doacao-form {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  .form-field {
+    width: 100%;
+  }
+
+  #enviar {
+    width: 50%;
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+    border-radius: 5px;
+    font-size: 20px;
+  }
+}
+

@@ -1,0 +1,15 @@
+<div class="contatos-infs">
+  <i class="bi bi-person-circle"></i>
+  <div class="conteudo">
+    <img
+      src="../../../assets/default/user-image.png"
+      alt="Foto do voluntário"
+    />
+    <div>
+      <h4>Nome: {{ contato.nome }}</h4>
+      <p>Função: {{ getFuncoes(contato) }}</p>
+      <p>Email: {{ contato.usuario.email }}</p>
+      <p>Telefone: {{ getMaskTelefone(contato.telefone) }}</p>
+    </div>
+  </div>
+</div>

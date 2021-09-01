@@ -1,0 +1,44 @@
+.barra-breadcrumb {
+  background-color: #ff8b4c;
+  height: 14vh;
+  display: flex;
+  justify-content: center;
+  padding: 0rem 11rem 0rem 11rem;
+  flex-direction: column;
+  color: #ffffff;
+}
+
+#breadcrumb-estilo {
+  padding-bottom: 5px;
+  text-decoration: none;
+  color: #ffffff;
+
+  ol {
+    list-style-type: none;
+    display: flex;
+    padding-left: 0px;
+  }
+  .breadcrumb-item {
+    padding-right: 5px;
+    font-size: 1rem;
+    color: #ffffff;
+    a {
+      text-decoration: none;
+      color: #ffffff;
+    }
+  }
+}
+
+#titulo-icone {
+  display: flex;
+  align-items: center;
+
+  #titulo-barra-breadcrumb {
+    font-size: 1.5rem;
+  }
+
+  #icon-barra-breadcrumb {
+    font-size: 2.5rem;
+    padding-right: 7px;
+  }
+}

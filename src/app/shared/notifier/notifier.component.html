@@ -1,0 +1,21 @@
+<div id="notifier-container" [ngClass]="data.severity">
+  <div id="bar"></div>
+  <mat-icon
+    *ngIf="isSuccess"
+    class="icon"
+    aria-hidden="false"
+    aria-label="check_circle"
+    >check_circle</mat-icon
+  >
+  <mat-icon
+    *ngIf="!isSuccess"
+    class="icon"
+    aria-hidden="false"
+    aria-label="error"
+    >error</mat-icon
+  >
+  <div id="notifier-content">
+    <h3>{{ data.title }}</h3>
+    <p>{{ data.message }}</p>
+  </div>
+</div>

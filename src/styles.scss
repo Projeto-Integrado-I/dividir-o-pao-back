@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto;
+  font-style: normal;
+}
+
+.mat-icon {
+  width: min-content !important;
+  height: min-content !important;
+}
+
+.mat-snack-bar-container {
+  padding: 0 !important;
+  min-height: min-content !important;
+}
+
+a {
+  &:visited {
+    color: #fefefe;
+  }
+
+  &:active {
+    color: #fefefe;
+  }
+}

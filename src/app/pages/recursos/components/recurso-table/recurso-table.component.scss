@@ -1,0 +1,79 @@
+@use '~@angular/material' as mat;
+@use '../../../../../theme/additional-colors.scss' as additional-colors;
+
+@mixin recurso-table-theme($theme) {
+  $color: mat.get-color-config($theme);
+  @if $color != null {
+    @include recurso-table-color($color);
+  }
+}
+
+@mixin recurso-table-color($color) {
+  $primary: map-get($color, "primary");
+  $warn: map-get($color, "warn");
+
+  #add-recurso {
+    color: mat.get-color-from-palette($primary, 500);
+  }
+
+  .icon svg {
+    width: 20px;
+  }
+
+  #delete-icon {
+    color: mat.get-color-from-palette(additional-colors.$md-default, 500);
+  }
+
+  .table-badge {
+    padding: 5px 10px;
+    border-radius: 7px;
+  }
+
+  .badge-success {
+    background: mat.get-color-from-palette($primary, 50);
+    color: mat.get-color-from-palette($primary, 600);
+  }
+
+  .badge-warn {
+    background: mat.get-color-from-palette($warn, 50);
+    color: mat.get-color-from-palette($warn, 600);
+  }
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+.mat-elevation-z8 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: none;
+  padding: 0px;
+  width: 100%;
+}
+
+mat-paginator {
+  width: 100%;
+  background-color: #f9f9f9;
+  border-radius: 0px 0px 25px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.mat-row:hover .mat-cell {
+  background-color: rgb(248, 235, 235);
+  padding-right: 0 !important;
+}
+
+.mat-sort-header-container {
+  width: 0;
+}
+
+.mat-header-cell {
+  font-size: 14px;
+  background-color: rgb(248, 235, 235);
+  padding-right: 0 !important;
+  width: 0 !important;
+}

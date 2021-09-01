@@ -1,0 +1,115 @@
+@use '~@angular/material' as mat;
+
+@mixin login-theme($theme) {
+  $color: mat.get-color-config($theme);
+  @if $color != null {
+    @include login-color($color);
+  }
+}
+
+@mixin login-color($color) {
+  $primary: map-get($color, "primary");
+  $warn: map-get($color, "warn");
+
+  #user-form {
+    h1 {
+      color: mat.get-color-from-palette($primary);
+    }
+  }
+
+  #criar-btn {
+    color: mat.get-color-from-palette($primary);
+  }
+
+  #botoes-container a {
+    color: mat.get-color-from-palette($warn);
+  }
+}
+
+@media (max-width: 1000px) {
+  #login-main {
+    grid-template-columns: 100% !important;
+  }
+
+  #login-section {
+    grid-column: 1/1 !important;
+    place-self: center !important;
+    margin-right: 0 !important;
+  }
+}
+
+#login-main {
+  height: 100%;
+  background-image: url("../../../assets/login/bg-login.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#login-section {
+  grid-column: 2/3;
+  place-self: center;
+  display: grid;
+  grid-template-rows: 80px 1fr;
+  background-color: #f9f9f9;
+  width: 630px;
+  height: 450px;
+  border-radius: 30px;
+  margin-top: 10rem;
+  margin-right: 5rem;
+  align-content: center;
+  box-shadow: 0px -5px 40px rgba(18, 18, 18, 0.15);
+
+  #login-header {
+    display: grid;
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+    h1 {
+      align-self: center;
+      justify-self: center;
+      font-weight: 700 !important;
+      font-family: sans-serif;
+      font-weight: 500;
+    }
+  }
+}
+
+#login-form {
+  display: grid;
+  place-self: center;
+  grid-template-rows: repeat(3, min-content);
+  width: 100%;
+  height: 80%;
+  align-content: center;
+  padding: 0 7rem;
+  font-size: 0.9rem;
+
+  .mat-raised-button {
+    font-weight: 600 !important;
+    font-family: sans-serif;
+  }
+
+  .form-field {
+    width: 100%;
+  }
+}
+
+#botoes-container {
+  display: center;
+  justify-items: center;
+  align-items: center;
+  row-gap: 15px;
+  width: 100%;
+  height: 125px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+#btn-entrar {
+  width: 100%;
+  height: 46px;
+  font-size: 20px;
+}

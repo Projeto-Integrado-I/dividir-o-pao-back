@@ -1,0 +1,79 @@
+<main id="login-main">
+  <section id="login-section">
+    <div id="login-header" class="primary-inner-header-color">
+      <h1>Entrar na minha conta</h1>
+    </div>
+    <form id="login-form" [formGroup]="userForm">
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="Ex:. email@gmail.com"
+        />
+        <mat-icon matSuffix color="warn">cancel</mat-icon>
+        <mat-error
+          *ngIf="
+            userFormControls.email.hasError('email') &&
+            !userFormControls.email.hasError('required')
+          "
+        >
+          Por favor, utilize um email <strong>válido</strong>
+        </mat-error>
+        <mat-error *ngIf="userFormControls.email.hasError('required')">
+          Email é <strong>obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          matInput
+          formControlName="senha"
+          placeholder="Sua senha aqui"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          color="primary"
+          (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hidePassword"
+        >
+          <mat-icon>{{
+            hidePassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+        <mat-error *ngIf="userFormControls.senha.hasError('required')">
+          Senha é <strong>obrigatória</strong>
+        </mat-error>
+        <mat-error *ngIf="userFormControls.senha.hasError('minlength')">
+          Senha deve conter no <strong>mínimo 6 caracteres</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <div id="botoes-container">
+        <button
+          id="btn-entrar"
+          class="secondary-btn-color"
+          mat-raised-button
+          (click)="onSubmit()"
+          color="warn"
+        >
+          Entrar
+        </button>
+        <a href="">Esqueceu sua senha?</a>
+        <button
+          mat-raised-button
+          class="accent-btn-color"
+          id="criar-btn"
+          (click)="navigateToSignup()">
+          Criar Conta
+        </button>
+      </div>
+    </form>
+  </section>
+</main>

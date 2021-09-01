@@ -1,0 +1,67 @@
+@use '~@angular/material' as mat;
+
+@mixin notifier-theme($theme) {
+  $color: mat.get-color-config($theme);
+  @if $color != null {
+    @include notifier-color($color);
+  }
+}
+
+@mixin notifier-color($color) {
+  $accent: map-get($color, 'accent');
+  $warn: map-get($color, 'warn');
+
+  .success {
+    background-color: mat.get-color-from-palette($accent, 200);
+    color: mat.get-color-from-palette($accent, 900);
+
+    & #bar {
+      background-color: mat.get-color-from-palette($accent, 700);
+    }
+
+    & h3 {
+      color: mat.get-color-from-palette($accent, 900);
+    }
+  }
+
+  .error {
+    background-color: mat.get-color-from-palette($warn, 200);
+    color: mat.get-color-from-palette($warn, 900);
+
+    & #bar {
+      background-color: mat.get-color-from-palette($warn, 700);
+    }
+
+    & h3 {
+      color: mat.get-color-from-palette($warn, 900);
+    }
+  }
+}
+
+#notifier-container {
+  display: grid;
+  grid-template-columns: 6px 15% 1fr;
+  grid-template-rows: 1fr;
+
+  & #bar {
+    grid-column: 1/2;
+  }
+
+  & .icon {
+    grid-column: 2/3;
+    place-self: center;
+    font-size: 2.3rem;
+  }
+
+  #notifier-content {
+    display: grid;
+    grid-column: 3/4;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 10px;
+    padding: 14px 12px !important;
+
+    & h3 {
+      font-weight: bold;
+    }
+  }
+}

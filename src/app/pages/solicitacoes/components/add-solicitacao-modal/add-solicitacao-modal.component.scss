@@ -1,0 +1,110 @@
+@use '~@angular/material' as mat;
+@use '../../../../../theme/additional-colors.scss' as additional-colors;
+
+@mixin add-solicitacao-modal-theme($theme) {
+  $color: mat.get-color-config($theme);
+  @if $color != null {
+    @include add-solicitacao-modal-color($color);
+  }
+}
+
+@mixin add-solicitacao-modal-color($color) {
+  $warn: map-get($color, "warn");
+  $accent: map-get($color, "accent");
+  $primary: map-get($color, "primary");
+  $default: additional-colors.$md-default;
+
+  #head-corpo {
+    background-color: mat.get-color-from-palette($primary);
+    & p {
+      color: #fff;
+      padding-left: 40px;
+    }
+
+    & #exit {
+      color: #fff;
+      padding-right: 60px;
+    }
+  }
+
+  #enviar {
+    color: mat.get-color-from-palette($primary);
+    background-color: mat.get-color-from-palette($accent);
+    border-color: mat.get-color-from-palette($accent);
+  }
+
+  .color-span {
+    color: mat.get-color-from-palette($primary);
+  }
+}
+
+::ng-deep.mat-dialog-container {
+  width: 500px;
+  height: 500px;
+  border-radius: 25px;
+  padding: 0px;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+}
+
+#head-corpo {
+  width: 100%;
+  height: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  & p {
+    padding-left: 40px;
+  }
+
+  & #exit {
+    padding-right: 60px;
+  }
+}
+
+.caixa-maior {
+  width: 100%;
+  height: 88%;
+  padding: 0px 10px 20px 10px;
+  margin: 0 auto;
+  align-items: center;
+  display: grid;
+}
+
+#solicitacao-form {
+  place-self: center;
+  width: max-content;
+  height: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: min-content;
+  grid-column-gap: 10px;
+  align-items: center;
+  overflow-y: scroll;
+
+  .form-field {
+    width: 100%;
+  }
+}
+
+
+#enviar-solicitacao {
+  width: 100%;
+  margin: 0px;
+  padding: 0px 0px 0px 0px;
+  border-radius: 5px;
+  font-size: 20px;
+  grid-column: 1/3;
+}
+
+.color-span {
+  font-weight: 600;
+}
+
+#input-auxilio .mat-form-field-prefix  {
+  align-self: center;
+}

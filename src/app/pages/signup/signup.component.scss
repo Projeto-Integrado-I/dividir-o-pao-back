@@ -1,0 +1,148 @@
+@use '~@angular/material' as mat;
+
+@mixin signup-theme($theme) {
+  $color: mat.get-color-config($theme);
+  @if $color != null {
+    @include signup-color($color);
+  }
+}
+
+@mixin signup-color($color) {
+  $primary: map-get($color, "primary");
+  $warn: map-get($color, "warn");
+
+  #middle-divider {
+    background-color: #ededed;
+    color: mat.get-color-from-palette($primary);
+
+    span {
+      color: #6d6d6d;
+    }
+
+    mat-icon {
+      color: #0cad49;
+    }
+  }
+
+  #bottom-section {
+    background-color: mat.get-color-from-palette($warn);
+    #user-form {
+      background-color: white;
+
+      h1 {
+        color: mat.get-color-from-palette($primary);
+      }
+
+      .mat-raised-button {
+        color: mat.get-color-from-palette($primary) !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1780px) {
+  #bottom-section {
+    display: grid;
+    grid-template-columns: 0 100% !important;
+  }
+}
+
+#signup-main {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  background: blue;
+  grid-template-rows: 50vw minmax(73px, 5vw) max-content;
+  grid-template-columns: 100%;
+
+  #top-section {
+    background-image: url("../../../assets/signup/bg-top.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100%;
+    background-position: left;
+    transform: scaleX(1.2);
+    transform-origin: right;
+  }
+
+  #middle-divider {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(min-content, max-content));
+    grid-template-rows: 100%;
+    column-gap: 5px;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2rem;
+  }
+
+  .divider-item {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+    width: fit-content;
+    margin: 0 1em 0 1em;
+
+    span {
+      grid-row: 2/3;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  }
+
+  #bottom-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100%;
+    height: 82vh;
+    min-height: 1100px;
+
+    #cooky {
+      grid-column: 1/2;
+      background-image: url("../../../assets/signup/cozinheira.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    #user-form {
+      grid-column: 2/3;
+      display: grid;
+      row-gap: 5px;
+      grid-template-rows: 20% repeat(5, 1fr);
+      justify-self: center;
+      align-self: center;
+      max-width: 41em;
+      width: 100%;
+      min-width: 39em;
+      height: max-content;
+      max-height: 90%;
+      border-radius: 15px;
+      padding: 40px 65px;
+      align-content: center;
+      font-size: 1.1rem;
+
+      h1 {
+        font-size: 2.2rem;
+        align-self: center;
+        justify-self: center;
+        margin-bottom: 20px;
+        font-weight: 700 !important;
+        font-family: sans-serif;
+      }
+
+      .mat-raised-button {
+        font-weight: 600 !important;
+        font-family: sans-serif;
+        margin-bottom: 2em;
+        font-size: 1.7rem;
+        padding: 0.5rem;
+      }
+
+      .form-field {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.full-width-table {
+  width: 100%;
+}
+
+.mat-cell, .mat-footer-cell, .mat-header-cell, .mat-paginator {
+  background-color: #E5E7E8;
+
+}
+.mat-paginator{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+}
+
+.mat-elevation-z8{
+  box-shadow: none;
+}
+
+.mat-row:hover .mat-cell {
+  background-color:#cdd1d3;
+}

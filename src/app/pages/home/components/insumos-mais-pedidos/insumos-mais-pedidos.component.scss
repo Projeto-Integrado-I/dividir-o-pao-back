@@ -1,0 +1,121 @@
+@use '~@angular/material' as mat;
+@use '../../../../../theme/additional-colors.scss' as additional-colors;
+
+@mixin insumos-mais-pedidos-theme($theme) {
+  $color: mat.get-color-config($theme);
+  @if $color != null {
+    @include insumos-mais-pedidos-color($color);
+  }
+}
+
+@mixin insumos-mais-pedidos-color($color) {
+  $primary: map-get($color, "primary");
+  $warn: map-get($color, "warn");
+
+  
+  #head { background-color: mat.get-color-from-palette(
+    additional-colors.$md-orange
+  );
+  color: #fff;
+  }
+
+  #insumos-mais-pedidos {
+    background-color: #f9f9f9;
+  }
+
+  #insumo-1, #insumo-2, #insumo-3{
+    font-size: 1.5rem;
+    color: #a1a1a1;
+  }
+
+  .data{
+    background: #f8ebeb;
+  }
+}
+
+:host {
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  margin-top: 3rem;
+}
+
+#insumos-mais-pedidos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+
+  #head {
+    border-radius: 25px 25px 0px 0px;
+    width: 100%;
+    height: 8vh;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 3rem max-content max-content 1fr;
+    grid-template-rows: 100%;
+    column-gap: 10px;
+
+    #pig-icon {
+      grid-column: 2/3;
+      font-size: 2.3rem;
+    }
+
+    h1 {
+      grid-column: 3/4;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 41px;
+    }
+  }
+
+  .data{
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p{
+      font-size: 1.2rem;
+    }
+  }
+}
+
+#content {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.insumos{
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+
+  .quantidade-medida{
+    display:flex;
+    align-items: flex-end;
+    padding-bottom: 0.5rem;
+  
+    #quantidade-1, #quantidade-2, #quantidade-3{
+      font-size: 3rem;
+    }
+  }
+
+  #insumo-1, #insumo-2, #insumo-3{
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,43 @@
+<main id="historico-solicitacao-main">
+  <app-breadcrumb-header paginaAnterior="Solicitações" paginaAtual="Histórico Solicitações" title="Solicitações dos Voluntários em 2021" icone="sms"></app-breadcrumb-header>
+  <section class="barra-historico">
+    <span class="meses">
+      <button mat-button>JAN</button>
+      <button mat-button>FEV</button>
+      <button mat-button>MAR</button>
+      <button mat-button>ABR</button>
+      <button mat-button>MAI</button>
+      <button mat-button>JUN</button>
+      <button mat-button>JUL</button>
+      <button mat-button>AGO</button>
+      <button mat-button>SET</button>
+      <button mat-button>OUT</button>
+      <button mat-button>NOV</button>
+      <button mat-button>DEZ</button>
+    </span>
+  </section>
+  <section class="dashboard">
+    <div class="margem-esquerda">
+      <div class="caixa-dinheiro">
+        <div class="caixa-dinheiro-info">
+          <div class="total-cifrao">
+            <p id="total">Total:</p>
+            <p id="cifrao">R$</p>
+          </div>
+          <div class="dinheiro-mes">
+            <p id="dinheiro">150,00</p>
+            <p id="mes">SET</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="margem-direita">
+      <div class="posicao-tabela">
+        <div class="texto-historico">
+          <p>De 10 a 25 de Setembro</p>
+        </div>
+        <app-data-table></app-data-table>
+      </div>
+    </div>
+  </section>
+</main>

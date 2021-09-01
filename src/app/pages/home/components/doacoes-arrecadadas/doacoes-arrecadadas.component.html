@@ -1,0 +1,23 @@
+<article id="doacoes">
+  <header id="head-doacoes">
+    <mat-icon id="pig-icon">savings</mat-icon>
+    <h1>Doações Arrecadadas</h1>
+  </header>
+  <div id="content">
+    <span id="valor-doacao">
+      <h2>R$</h2>
+      <span id="content-2">
+        <h1 id="valor">{{ valor }}</h1>
+        <h1 id="data">10 SET</h1>
+      </span>
+    </span>
+    <button
+      *ngIf="isCoordenador"
+      mat-raised-button
+      (click)="openAlterarDoacao()"
+      class="accent-btn-color"
+    >
+      Alterar doações
+    </button>
+  </div>
+</article>

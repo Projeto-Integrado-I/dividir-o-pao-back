@@ -1,0 +1,131 @@
+@use '~@angular/material' as mat;
+
+@mixin header-theme($theme) {
+  $color: mat.get-color-config($theme);
+
+  @if $color != null {
+    @include header-color($color);
+  }
+}
+
+@mixin header-color($color) {
+  $primary: map-get($color, "primary");
+
+  #main-header {
+    background-color: mat.get-color-from-palette($primary);
+    color: mat.get-contrast-color-from-palette($primary, 500);
+  }
+}
+
+@media screen and (max-width: 1210px) {
+  #main-header {
+    grid-template-columns: 1fr !important;
+
+    #logo {
+      display: none !important;
+    }
+
+    #navbar {
+      justify-content: center !important;
+    }
+
+    #login-container {
+      grid-column: 1/1 !important;
+      grid-template-columns: 1fr 0.5em max-content !important;
+    }
+  }
+
+  #navbar ul li {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    padding: 0.1em;
+  }
+}
+
+#main-header {
+  width: 100%;
+  height: 10em;
+  max-height: fit-content;
+  display: grid;
+  grid-template-columns: 10% minmax(300px, 1fr) 1fr 10%;
+  grid-template-rows: 100%;
+  font-size: 0.41rem;
+
+  #logo {
+    grid-column: 2/3;
+    background-image: url("../../../../assets/logo/logo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  #login-container {
+    grid-column: 3/4;
+    display: grid;
+    grid-template-columns: 90% 0.5em 1fr;
+    grid-template-rows: 100%;
+    height: 100%;
+    width: 100%;
+
+    a {
+      grid-column: 1/2;
+      font-size: 1.9rem;
+      justify-self: end;
+      align-self: center;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:active {
+        color: #e1e1e1;
+      }
+
+      &:visited {
+        color: #e1e1e1;
+      }
+    }
+
+    #user-icon {
+      grid-column: 3/4;
+      justify-self: start;
+      align-self: center;
+      cursor: default;
+      font-size: 3rem;
+    }
+  }
+
+  #navbar {
+    display: flex;
+    justify-content: flex-end;
+
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding-inline-start: 0 !important;
+
+      li {
+        display: flex;
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding: 0.5em;
+        font-size: 1.2rem;
+
+        a {
+          color: white;
+          text-decoration: none;
+          display: flex;
+
+          span {
+            margin-right: 0.5em;
+          }
+        }
+      }
+    }
+  }
+}

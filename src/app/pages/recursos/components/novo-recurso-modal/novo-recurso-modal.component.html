@@ -1,0 +1,81 @@
+<section id="main">
+  <section id="head-corpo">
+    <p>Adicione um novo insumo</p>
+    <button
+      id="exit"
+      mat-icon-button
+      (click)="closeDialog()"
+      color="primary"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </section>
+
+  <div class="caixa-maior">
+    <form id="add-recurso-form" [formGroup]="recursoForm">
+      <div id="caixa-superior">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput formControlName="nome" required>
+          <mat-error *ngIf="recursoFormControls.nome.hasError('required')">
+            Nome é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div id="caixa-forms">
+        <div class="caixa-lateral">
+          <mat-form-field class="form-field" appearance="outline">
+            <input matInput currencyMask formControlName="preco" formControlName="preco" required
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', precision: 2 }">
+              <mat-error *ngIf="recursoFormControls.preco.hasError('required')">
+                Preço é <strong>obrigatório</strong>
+              </mat-error>
+              <mat-error *ngIf="recursoFormControls.preco.hasError('min')">
+                Preço deve ser no <strong>mínimo R$ 0,01</strong>
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label placeholder="Tipo">Tipo</mat-label>
+            <mat-select formControlName="tipoRecurso" required>
+              <mat-option *ngFor="let tipoRecurso of tiposRecursos" [value]="tipoRecurso.value">
+                {{ tipoRecurso.label }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="recursoFormControls.tipoRecurso.hasError('required')">
+              Tipo é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="caixa-lateral">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label placeholder="Medida">Medida</mat-label>
+            <input type="text" matInput formControlName="tipoMedida" required>
+            <mat-error *ngIf="recursoFormControls.tipoMedida.hasError('required')">
+              Medida é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label placeholder="Ativo">Ativo</mat-label>
+            <mat-select formControlName="ativo" required>
+              <mat-option *ngFor="let stat of status" [value]="stat.value">
+                {{ stat.label }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="recursoFormControls.ativo.hasError('required')">
+              Ativo é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div id="caixa-inferior">
+        <button mat-raised-button color="accent" [disabled]="recursoForm.invalid" id="enviar" (click)="onSubmit()">Enviar</button>
+      </div>
+    </form>
+  </div>
+</section>

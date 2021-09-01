@@ -1,0 +1,19 @@
+<header id="main-header">
+  <div id="logo" [routerLink]="['/home']"></div>
+  <div *ngIf="!estaLogado" id="login-container">
+    <a [routerLink]="['/login']" id="enter-login">Entrar na conta</a>
+    <mat-icon id="user-icon" aria-hidden="false" aria-label="user-account"
+      >account_circle</mat-icon
+    >
+  </div>
+  <nav *ngIf="estaLogado" id="navbar">
+    <ul>
+      <li *ngFor="let link of links">
+        <a [href]="link.href" (click)="link.action && link.action()">
+          <span>{{ link.name }}</span>
+          <mat-icon *ngIf="link.icon">{{ link.icon }}</mat-icon>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
