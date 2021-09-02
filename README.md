@@ -71,3 +71,19 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## Como executar o Backend da aplicação
+
+Para executar o backend da aplicação, basta seguir o tutorial de execução do framework Nest.js demonstrado anteriormente. Além disso, é necessário um banco de dados Mysql (xamp, preferencialmente). Tendo aberto o banco de dados mysql, rode os seguintes comandos no script sql:
+
+Primeiro Comando:
+use dividiropao;
+INSERT INTO funcao SELECT 1, 'Entregador';
+INSERT INTO funcao SELECT 2, 'Cozinheiro';
+INSERT INTO funcao SELECT 3, 'Coordenador';
+
+Segundo Comando:
+insert into doacoes select 1, 0;
+
+Tendo esses comandos executados, vá no terminal do editor de código onde o backend estará rodando e digite o comando npm run start:dev. Com isso, é só executar o backend e o frontend para ver a aplicação funciondo no seu navegador.
+
